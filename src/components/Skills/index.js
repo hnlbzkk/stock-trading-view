@@ -6,7 +6,7 @@ import metric2 from "../../assets/img/meter2.svg"
 import metric3 from "../../assets/img/meter3.svg"
 import bgColor from "../../assets/img/color-sharp.png"
 import {useDispatch, useSelector} from "react-redux";
-import { increment, decrement } from '../../redux/reducer/reducer1';
+import { increment, decrement } from '../../redux/slice/reducer1';
 
 const Skills = () => {
     const responsive = {}

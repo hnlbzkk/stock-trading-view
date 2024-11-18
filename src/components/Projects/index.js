@@ -6,7 +6,7 @@ import bgColor2 from "../../assets/img/color-sharp2.png"
 import {ProjectCard} from "../ProjectCard";
 import {useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {setCount} from "../../redux/reducer/reducer2";
+import {setToken} from "../../redux/slice/authSlice";
 const Projects = () => {
 
     const projects = [
@@ -38,7 +38,7 @@ const Projects = () => {
         <section className={"project"} id={"project"}>
             <div>
                 <input type={"number"} value={inputValue*1} onChange={handleInput}/>
-                <Button onClick={() => dispatch(setCount(inputValue))}>Change</Button>
+                <Button onClick={() => dispatch(setToken(inputValue))}>Change</Button>
             </div>
             <Container>
                 <Row>
