@@ -5,35 +5,15 @@ import metric1 from "../../assets/img/meter1.svg"
 import metric2 from "../../assets/img/meter2.svg"
 import metric3 from "../../assets/img/meter3.svg"
 import bgColor from "../../assets/img/color-sharp.png"
-import {useDispatch, useSelector} from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { increment, decrement } from '../../redux/slice/reducer1';
 
 const Skills = () => {
     const responsive = {}
 
-    // const responsive = {
-    //     superLargeDesktop: {
-    //         // the naming can be any, depends on you.
-    //         breakpoint: { max: 4000, min: 3000 },
-    //         items: 5
-    //     },
-    //     desktop: {
-    //         breakpoint: { max: 3000, min: 1024 },
-    //         items: 3
-    //     },
-    //     tablet: {
-    //         breakpoint: { max: 1024, min: 464 },
-    //         items: 2
-    //     },
-    //     mobile: {
-    //         breakpoint: { max: 464, min: 0 },
-    //         items: 1
-    //     }
-    // };
-
     const num = useSelector(state => state.slice1.num)
     const dispatch = useDispatch()
-    const count = useSelector(state => state.slice2.count)
+    const token = useSelector(state => state.authSlice.token)
 
     return (
         <section className={"skill"} id={"skills"}>
@@ -63,13 +43,13 @@ const Skills = () => {
             </Container>
             <img src={bgColor} alt={"Image"} className={"background-image-left"}/>
             <div>
-                <p>Count:{count}</p>
+                <p>Token:{token}</p>
                 <p>Num:{num}</p>
                 <Button onClick={() => {
-                    console.log(count)
-                    dispatch(increment(count))
+                    console.log(token)
+                    dispatch(increment(num))
                 }}>+</Button>
-                <Button onClick={() => dispatch(decrement(count))}>-</Button>
+                <Button onClick={() => dispatch(decrement(num))}>-</Button>
 
             </div>
         </section>

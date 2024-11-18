@@ -1,9 +1,12 @@
 import axios from "axios";
+import store from "../redux/store";
 
 // 创建 Axios 实例
 const axiosInstance = axios.create({
-    baseURL: "http://121.41.31.187:8081", // 替换为你的 API 基础路径
-    timeout: 5000, // 请求超时时间
+    // baseURL: "http://121.41.31.187:8081",
+    baseURL: "http://localhost:8081",
+    timeout: 50000, // 请求超时时间
+    withCredentials: true, // 如果后端需要 cookies 设置为 true
 });
 
 // 请求拦截器
@@ -23,9 +26,10 @@ axiosInstance.interceptors.request.use(
         );
 
         if (!isExcluded) {
-            const token = localStorage.getItem("token");
+            let state = store.getState()
+            const token = state.authSlice.token
             if (token) {
-                config.headers.Authorization = `Bearer ${token}`;
+                config.headers.Authorization = `Bearer ${token}`
             }
         }
 

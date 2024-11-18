@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Form from 'react-bootstrap/Form';
 import {Button, Card, Col, Container, Row} from "react-bootstrap";
-import {login} from "../../axios/service/authService";
+import {login, test} from "../../axios/service/authService";
 import {useDispatch} from "react-redux";
 import {setToken} from "../../redux/slice/authSlice";
 
@@ -26,6 +26,15 @@ const Login = () => {
             console.error(err)
         }
     };
+
+    const handleTest = async () => {
+        try {
+            const response = await test();
+            console.log(response)
+        } catch (err) {
+            console.error(err)
+        }
+    }
 
     return (
         <Container fluid className="d-flex justify-content-center align-items-center vh-100 bg-black text-light">
@@ -61,6 +70,14 @@ const Login = () => {
                                 onClick={handleLogin}
                             >
                                 确定
+                            </Button>
+                            <Button
+                                type="submit"
+                                variant="outline-info"
+                                className="w-100 mt-5"
+                                onClick={handleTest}
+                            >
+                                测试
                             </Button>
                         </Card.Body>
                     </Card>

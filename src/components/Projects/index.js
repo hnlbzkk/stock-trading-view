@@ -28,8 +28,8 @@ const Projects = () => {
     ]
 
     const dispatch = useDispatch()
-    const count = useSelector(state => state.slice2.count)
-    const [inputValue, setInputValue] = useState(count)
+    const token = useSelector(state => state.authSlice.token)
+    const [inputValue, setInputValue] = useState(token)
     const handleInput = (e) => {
         setInputValue(e.target.value)
     }
@@ -37,7 +37,7 @@ const Projects = () => {
     return (
         <section className={"project"} id={"project"}>
             <div>
-                <input type={"number"} value={inputValue*1} onChange={handleInput}/>
+                <input type={"string"} value={inputValue*1} onChange={handleInput}/>
                 <Button onClick={() => dispatch(setToken(inputValue))}>Change</Button>
             </div>
             <Container>
